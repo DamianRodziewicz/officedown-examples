@@ -1,0 +1,23 @@
+---
+output: 
+  officedown::rdocx_document:
+    mapstyles:
+      Normal: ['First Paragraph']
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.cap = TRUE)
+library(officedown)
+```
+
+# Report 1
+
+```{r, echo=FALSE, fig.cap="Plot 1", fig.id="plot1", fig.cap.style="Image Caption"}
+plot(1:10)
+```
+
+## Subsection
+
+```{r, echo=FALSE, tab.cap="Head of mtcars dataset", tab.id = "mtcars"}
+head(datasets::mtcars)
+```

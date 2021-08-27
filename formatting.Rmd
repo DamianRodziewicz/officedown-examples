@@ -1,0 +1,50 @@
+---
+date: "`r Sys.Date()`"
+author: "Author"
+title: "Title"
+output: 
+  officedown::rdocx_document:
+    mapstyles:
+      Normal: ['First Paragraph']
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.cap = TRUE, tab.cap = TRUE)
+library(officedown)
+library(officer)
+library(flextable)
+library(dplyr)
+```
+
+# Paragraph
+
+```{r echo=FALSE}
+italic <- shortcuts$fp_italic(font.size = 11)
+italic_blue <- update(italic, color = "blue")
+```
+
+```{r, echo=FALSE}
+fpar(
+  ftext("Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", italic_blue),
+  ftext("Lorem ipsum dolor sit amet, consectetur adipiscing elit. "),
+  ftext("Lorem ipsum dolor sit amet, consectetur adipiscing elit. ", italic)
+)
+```
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+# Table
+
+```{r, echo=FALSE, tab.cap="Head of diamonds dataset", tab.id="diamonds"}
+dat <- head(ggplot2::diamonds, n = 10)
+qflextable(dat) %>% 
+  color(~ price < 330, ~ price + x + y + z, color = "orange") %>% 
+  color(~ carat > .24, ~ cut, color = "red") %>% 
+  compose(
+    j = "clarity", 
+    value = as_paragraph(as_chunk(clarity, props = fp_text_default(color = "blue", italic = TRUE)))
+  )
+```
+
+
+

@@ -1,0 +1,39 @@
+---
+date: "`r Sys.Date()`"
+author: "Your Name"
+title: "officedown template"
+output: 
+  officedown::rdocx_document:
+    mapstyles:
+      Normal: ['First Paragraph']
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.cap = TRUE)
+library(officedown)
+library(officer)
+```
+
+\newpage
+
+## Table of content
+
+<!---BLOCK_TOC--->
+
+## List of figures
+
+<!---BLOCK_TOC{seq_id: 'fig'}--->
+
+## List of tables
+
+<!---BLOCK_TOC{seq_id: 'tab'}--->
+
+\newpage
+
+```{r, echo=FALSE}
+block_pour_docx("report1.docx")
+```
+
+```{r, echo=FALSE}
+block_pour_docx("report2.docx")
+```

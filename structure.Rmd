@@ -1,0 +1,52 @@
+---
+date: "`r Sys.Date()`"
+author: "Author"
+title: "Title"
+output: 
+  officedown::rdocx_document:
+    mapstyles:
+      Normal: ['First Paragraph']
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.cap = TRUE)
+library(officedown)
+```
+
+\newpage
+
+## List of figures
+
+<!---BLOCK_TOC{seq_id: "fig"}--->
+
+\newpage
+
+## Table of content
+
+<!---BLOCK_TOC--->
+
+\newpage
+
+## List of tables
+
+<!---BLOCK_TOC{seq_id: "tab"}--->
+
+\newpage
+
+## Section 1
+
+```{r, echo=FALSE, fig.cap="Plot 1", fig.id="plot1", fig.cap.style="Image Caption"}
+plot(1:10)
+```
+
+### Subsection 1
+
+```{r tab.cap="Head of mtcars dataset", tab.id = "mtcars"}
+head(mtcars)
+```
+
+## Section 2
+
+```{r, echo=FALSE, fig.cap="Plot 2", fig.id="plot2", fig.cap.style="Image Caption"}
+plot(1:10)
+```
